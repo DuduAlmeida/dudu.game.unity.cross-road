@@ -79,12 +79,12 @@ public class GLDraw3 : MonoBehaviour
     GL.PushMatrix();
     mat.SetPass(0);
     GL.Begin(GL.QUADS);
-        GL.Color(Color.red);
+    GL.Color(Color.red);
 
-        GL.Vertex3(bx, by, 0);
-        GL.Vertex3(bx, by+1, 0);
-        GL.Vertex3(bx+1, by+1, 0);
-        GL.Vertex3(bx+1, by, 0);
+    GL.Vertex3(bx, by, 0);
+    GL.Vertex3(bx, by + 1, 0);
+    GL.Vertex3(bx + 1, by + 1, 0);
+    GL.Vertex3(bx + 1, by, 0);
 
     GL.End();
     GL.PopMatrix();
@@ -150,6 +150,10 @@ public class GLDraw3 : MonoBehaviour
   }
   void CarMustang()
   {
+    Color carColor = Color.white;
+    carColor.r = 255;
+    carColor.g = 165;
+    carColor.b = 0;
     const int carWidth = 6;
     const int carHeight = 13;
     const float wheelHeight = 2.0f;
@@ -157,8 +161,56 @@ public class GLDraw3 : MonoBehaviour
 
     GL.PushMatrix();
     mat.SetPass(0);
+
+    // #region Preencher Carcaça Carro
+    GL.Begin(GL.QUADS);
+    GL.Color(carColor);
+    GL.Vertex(new Vector3(bx, by, 0));
+    GL.Vertex(new Vector3(bx, by + carWidth, 0));
+    GL.Vertex(new Vector3(bx + carHeight, by + carWidth, 0));
+    GL.Vertex(new Vector3(bx + carHeight, by, 0));
+    GL.End();
+    GL.Begin(GL.QUADS);
+    GL.Color(carColor);
+    GL.Vertex(new Vector3(bx + carHeight, by + carWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 1.05f), by + (carWidth / 2), 0));
+    GL.Vertex(new Vector3(bx + carHeight, by, 0));
+    GL.Vertex(new Vector3(bx + carHeight, by, 0));
+    GL.End();
+    // #endregion Preencher Carcaça Carro
+    // #region Preencher Pneus
+    GL.Begin(GL.QUADS);
+    GL.Color(Color.gray);
+    GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f), by, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f), by - wheelWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, by - wheelWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, by, 0));
+    GL.End();
+    GL.Begin(GL.QUADS);
+    GL.Color(Color.gray);
+    GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f), by + carWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f), by + carWidth + wheelWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, by + carWidth + wheelWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, by + carWidth, 0));
+    GL.End();
+    GL.Begin(GL.QUADS);
+    GL.Color(Color.gray);
+    GL.Vertex(new Vector3(bx + (carHeight * 0.75f) + (wheelHeight * 0.5f), by, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.75f) + (wheelHeight * 0.5f), by - wheelWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, by - wheelWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, by, 0));
+    GL.End();
+    GL.Begin(GL.QUADS);
+    GL.Color(Color.gray);
+    GL.Vertex(new Vector3(bx + (carHeight * 0.75f) + (wheelHeight * 0.5f), by + carWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.75f) + (wheelHeight * 0.5f), by + carWidth + wheelWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, by + carWidth + wheelWidth, 0));
+    GL.Vertex(new Vector3(bx + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, by + carWidth, 0));
+    GL.End();
+    // #endregion Preencher Pneus
+
     GL.Begin(GL.LINES);
-    GL.Color(Color.red);
+    GL.Color(Color.black);
 
     // #region Carro                
     // #region Carro#Carcaça            
