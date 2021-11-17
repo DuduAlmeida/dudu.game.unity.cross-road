@@ -339,6 +339,7 @@ public class GLDraw3 : MonoBehaviour
     mat.SetPass(0);
     GL.Begin(GL.LINES);
 
+    // #region motoca
     // #region contorno motoca
     GL.Vertex(new Vector3(bx, by, 0));
     GL.Vertex(new Vector3(bx, by + 1, 0));
@@ -402,6 +403,7 @@ public class GLDraw3 : MonoBehaviour
     GL.Vertex(new Vector3(bx + 3, by + (float)0.5, 0));
     GL.Vertex(new Vector3(bx + 5, by + (float)(-1.5), 0));
     // #endregion linhas internas motoca
+    // #endregion motoca
 
     GL.End();
     GL.PopMatrix();
