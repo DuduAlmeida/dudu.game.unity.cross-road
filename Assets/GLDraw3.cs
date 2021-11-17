@@ -65,6 +65,7 @@ public class GLDraw3 : MonoBehaviour
       BarBottom();
       Ball();
       // CarMustang();
+      // Motorcycle();
     }
   }
   #endregion
@@ -328,6 +329,79 @@ public class GLDraw3 : MonoBehaviour
     GL.Vertex(new Vector3(bx + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, by, 0));
     // #endregion Pneu Traseiro Esquerda
     // #endregion Carro
+
+    GL.End();
+    GL.PopMatrix();
+  }
+  void Motorcycle()
+  {
+    GL.PushMatrix();
+    mat.SetPass(0);
+    GL.Begin(GL.LINES);
+
+    // #region contorno motoca
+    GL.Vertex(new Vector3(bx, by, 0));
+    GL.Vertex(new Vector3(bx, by + 1, 0));
+    GL.Vertex(new Vector3(bx, by + 1, 0));
+    GL.Vertex(new Vector3(bx + 1, by + 1, 0));
+    GL.Vertex(new Vector3(bx + 1, by + 1, 0));
+    GL.Vertex(new Vector3(bx + 5, by + (float)2.5, 0));
+    GL.Vertex(new Vector3(bx + 5, by + (float)2.5, 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + 4, 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + 4, 0));
+    GL.Vertex(new Vector3(bx + 6, by + (float)3.8, 0));
+    GL.Vertex(new Vector3(bx + 6, by + (float)3.8, 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + (float)2.5, 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + (float)2.5, 0));
+    GL.Vertex(new Vector3(bx + (float)9.5, by + (float)1.5, 0));
+    GL.Vertex(new Vector3(bx + (float)9.5, by + (float)1.5, 0));
+    GL.Vertex(new Vector3(bx + (float)14.5, by + 2, 0));
+    GL.Vertex(new Vector3(bx + (float)14.5, by + 2, 0));
+    GL.Vertex(new Vector3(bx + 16, by + (float)1.5, 0));
+    GL.Vertex(new Vector3(bx + 16, by + (float)1.5, 0));
+    GL.Vertex(new Vector3(bx + 17, by + (float)1.5, 0));
+    GL.Vertex(new Vector3(bx + 17, by + (float)1.5, 0));
+    GL.Vertex(new Vector3(bx + 17, by + (float)(-0.5), 0));
+    GL.Vertex(new Vector3(bx + 17, by + (float)(-0.5), 0));
+    GL.Vertex(new Vector3(bx + 16, by + (float)(-0.5), 0));
+    GL.Vertex(new Vector3(bx + 16, by + (float)(-0.5), 0));
+    GL.Vertex(new Vector3(bx + (float)14.5, by + (-1), 0));
+    GL.Vertex(new Vector3(bx + (float)14.5, by + (-1), 0));
+    GL.Vertex(new Vector3(bx + 16, by + (-1), 0));
+    GL.Vertex(new Vector3(bx + 16, by + (-1), 0));
+    GL.Vertex(new Vector3(bx + 16, by + (float)(-1.8), 0));
+    GL.Vertex(new Vector3(bx + 16, by + (float)(-1.8), 0));
+    GL.Vertex(new Vector3(bx + (float)12.5, by + (float)(-1.8), 0));
+    GL.Vertex(new Vector3(bx + (float)12.5, by + (float)(-1.8), 0));
+    GL.Vertex(new Vector3(bx + (float)9.5, by + (float)(-0.5), 0));
+    GL.Vertex(new Vector3(bx + (float)9.5, by + (float)(-0.5), 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + (float)(-1.5), 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + (float)(-1.5), 0));
+    GL.Vertex(new Vector3(bx + 6, by + (float)(-2.8), 0));
+    GL.Vertex(new Vector3(bx + 6, by + (float)(-2.8), 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + (-3), 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + (-3), 0));
+    GL.Vertex(new Vector3(bx + 5, by + (float)(-1.5), 0));
+    GL.Vertex(new Vector3(bx + 5, by + (float)(-1.5), 0));
+    GL.Vertex(new Vector3(bx + 1, by, 0));
+    GL.Vertex(new Vector3(bx + 1, by, 0));
+    GL.Vertex(new Vector3(bx, by, 0));
+    // #endregion contorno motoca
+    // #region linhas internas motoca
+    GL.Vertex(new Vector3(bx + 5, by + (float)2.5, 0));
+    GL.Vertex(new Vector3(bx + 5, by + (float)(-1.5), 0));
+
+    GL.Vertex(new Vector3(bx + (float)5.5, by + (float)2.5, 0));
+    GL.Vertex(new Vector3(bx + (float)5.5, by + (float)(-1.5), 0));
+
+    GL.Vertex(new Vector3(bx + (float)14.5, by + (-1), 0));
+    GL.Vertex(new Vector3(bx + (float)9.5, by + (float)(-0.5), 0));
+
+    GL.Vertex(new Vector3(bx + 5, by + (float)2.5, 0));
+    GL.Vertex(new Vector3(bx + 3, by + (float)0.5, 0));
+    GL.Vertex(new Vector3(bx + 3, by + (float)0.5, 0));
+    GL.Vertex(new Vector3(bx + 5, by + (float)(-1.5), 0));
+    // #endregion linhas internas motoca
 
     GL.End();
     GL.PopMatrix();
