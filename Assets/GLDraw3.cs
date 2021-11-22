@@ -75,6 +75,11 @@ public class GLDraw3 : MonoBehaviour
   {
     sg = true;
   }
+  public void QuitGame()
+  {
+    Application.Quit();
+    Debug.Log("Game is exiting");
+  }
   void Ball()
   {
     GL.PushMatrix();
