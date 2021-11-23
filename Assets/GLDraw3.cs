@@ -10,6 +10,7 @@ public class GLDraw3 : MonoBehaviour
   bool sg = false;
   public float by = 0;
   float bx = 0;
+  bool motoca = false;
   public float mx = 10;
   public float my = 10;
   float velo = 0.05f;
@@ -342,6 +343,8 @@ public class GLDraw3 : MonoBehaviour
   }
   void Motorcycle(float motorcycleX, float motorcycleY)
   {
+    motoca = true;
+
     GL.PushMatrix();
     mat.SetPass(0);
     GL.Begin(GL.LINES);
@@ -460,9 +463,11 @@ public class GLDraw3 : MonoBehaviour
     }
     //Motoca collision
     else if (((by + 1) >= (my - 3) && (by - 1) <= (my + 4)) && ((bx + 1) >= (mx) && (bx - 1) <= (my + 17))){
-      life--;
-      by = 0;
-      shoot = false;
+      if (motoca) {
+        life--;
+        by = 0;
+        shoot = false;
+      }
     }
   }
   #endregion
