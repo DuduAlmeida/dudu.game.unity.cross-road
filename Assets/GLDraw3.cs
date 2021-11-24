@@ -77,10 +77,16 @@ public class GLDraw3 : MonoBehaviour
   }
   public void QuitGame()
   {
+    // save any game data here
+    #if UNITY_EDITOR
+    // Application.Quit() does not work in the editor so
+    // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+    UnityEditor.EditorApplication.isPlaying = false;
+    #else
     Application.Quit();
-    Debug.Log("Game is exiting");
+    #endif
   }
-  void Ball()
+    void Ball()
   {
     GL.PushMatrix();
     mat.SetPass(0);
