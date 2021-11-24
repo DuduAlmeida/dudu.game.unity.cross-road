@@ -321,6 +321,13 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: f0a93d48da77563468e6556b890efdb4, type: 2}
   sb: {x: 0, y: 0}
   by: 0
+  bx: 0
+  bcx: 0
+  bcy: 15
+  mcx: 30
+  mccy: 10
+  mx: 10
+  my: 10
   mGL: -2
   mGR: 2
   life: 3
@@ -1008,7 +1015,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 519420030}
         m_TargetAssemblyTypeName: GLDraw3, Assembly-CSharp
-        m_MethodName: SatartGame
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
