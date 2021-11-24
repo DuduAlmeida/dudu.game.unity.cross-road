@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GLDraw3 : MonoBehaviour
 {
-<<<<<<< Updated upstream
     public Material mat;
     public Vector2 sb;
     bool sg = false;
@@ -32,7 +31,6 @@ public class GLDraw3 : MonoBehaviour
 
     #region Unity Methods
     private void Start()
-=======
   public Material mat;
   public Vector2 sb;
   bool sg = false;
@@ -121,7 +119,6 @@ public class GLDraw3 : MonoBehaviour
     }
     public void QuitGame()
     {
-<<<<<<< Updated upstream
         // save any game data here
         #if UNITY_EDITOR
         // Application.Quit() does not work in the editor so
@@ -130,7 +127,6 @@ public class GLDraw3 : MonoBehaviour
         #else
         Application.Quit();
         #endif
-=======
       BarRight();
       BarGol();
       BarLeft();
@@ -138,11 +134,8 @@ public class GLDraw3 : MonoBehaviour
       Mouse();
       CarMustang(1, 1);
       Motorcycle(mx, my);
->>>>>>> Stashed changes
     }
     void Ball()
-<<<<<<< Updated upstream
-=======
   {
     GL.PushMatrix();
     mat.SetPass(0);
