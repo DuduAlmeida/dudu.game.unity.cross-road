@@ -17,8 +17,8 @@ public class GLDraw3 : MonoBehaviour
   public float bcy = 15; //basciCar
   public float mcx = 30; //mustangCar
   public float mccy = 10; //mustangCar
-  public float mx = 10;
-  public float my = 10;
+  public float mx = 10; //motorcycle
+  public float my = 10; //motorcycle
   float velo = 0.05f;
   bool shoot = false;
   public float mGL = -2;
@@ -64,17 +64,18 @@ public class GLDraw3 : MonoBehaviour
 
     Move();
     Collision();
-  }
+    MoveVehicles();
+    }
   private void OnPostRender()
   {
     if (sg)
     {
       BarObjective();
       BarBottom();
-      Ball();
       CarMustang(mcx, mccy);
       BasicCar(bcx, bcy);
       Motorcycle(mx, my);
+      Mouse();
     }
   }
   #endregion
@@ -935,6 +936,35 @@ public class GLDraw3 : MonoBehaviour
       }
     }
   }
+
+    void MoveVehicles() {
+        if (bcx > sb.x * (-1))
+        {
+            bcx -= 0.01f;
+        }
+        else {
+            bcx = 60;
+        }
+
+        if (mcx > sb.x * (-1))
+        {
+            mcx -= 0.05f;
+        }
+        else
+        {
+            mcx = 60;
+        }
+
+        if (mx > sb.x * (-1))
+        {
+            mx -= 0.025f;
+        }
+        else
+        {
+            mx = 60;
+        }
+
+    }
 
   #endregion
 }
