@@ -9,7 +9,7 @@ public class GLDraw3 : MonoBehaviour
     public Vector2 sb;
     bool sg = false;
     public float by = 0;
-    float bx = 0;
+    public float bx = 0;
     bool motoca = false;
     bool carrinho = false;
     bool mustang = false;
@@ -31,40 +31,6 @@ public class GLDraw3 : MonoBehaviour
 
     #region Unity Methods
     private void Start()
-  public Material mat;
-  public Vector2 sb;
-  bool sg = false;
-  public float by = 0;
-  public float bx = 0;
-  bool motoca = false;
-  public float mx = 10;
-  public float my = 10;
-  float velo = 0.05f;
-  bool shoot = false;
-  public float mGL = -2;
-  public float mGR = 2;
-  bool invert;
-  public int life = 3;
-  public int score = 0;
-  public Text tL;
-  public Text tS;
-
-  #region Unity Methods
-  private void Start()
-  {
-    tL.text = life.ToString();
-    tS.text = score.ToString();
-    sb = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-  }
-  private void Update()
-  {
-    tL.text = life.ToString();
-    tS.text = score.ToString();
-
-    sb = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-
-    if (Input.GetKey(KeyCode.LeftArrow))
->>>>>>> Stashed changes
     {
         tL.text = life.ToString();
         tS.text = score.ToString();
@@ -587,7 +553,6 @@ public class GLDraw3 : MonoBehaviour
       by += velo;
 
     if (mGL > sb.x * (-1) && invert)
->>>>>>> Stashed changes
     {
         GL.PushMatrix();
         mat.SetPass(0);
