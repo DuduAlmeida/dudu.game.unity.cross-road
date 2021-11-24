@@ -69,7 +69,7 @@ public class GLDraw3 : MonoBehaviour
   {
     if (sg)
     {
-      BarGol();
+      BarObjective();
       BarBottom();
       Ball();
       CarMustang(mcx, mccy);
@@ -80,7 +80,7 @@ public class GLDraw3 : MonoBehaviour
   #endregion
 
   #region My Methods
-  public void SatartGame()
+  public void StartGame()
   {
     sg = true;
   }
@@ -220,7 +220,7 @@ public class GLDraw3 : MonoBehaviour
 
   }
 
-  void BarGol()
+  void BarObjective()
   {
     GL.PushMatrix();
     mat.SetPass(0);
