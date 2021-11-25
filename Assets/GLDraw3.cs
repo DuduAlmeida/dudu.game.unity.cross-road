@@ -15,7 +15,7 @@ public class GLDraw3 : MonoBehaviour
   bool mustang = false;
   public float bcx = 0; //basciCar
   public float bcy = 15; //basciCar
-  public float mcx = 30; //mustangCar
+  public float mcx = -30; //mustangCar
   public float mccy = 10; //mustangCar
   public float mx = 10; //motorcycle
   public float my = 10; //motorcycle
@@ -938,21 +938,21 @@ public class GLDraw3 : MonoBehaviour
   }
 
     void MoveVehicles() {
-        if (bcx > sb.x * (-1))
+        if (bcx < sb.x)
         {
-            bcx -= 0.01f;
+            bcx += 0.01f;
         }
         else {
-            bcx = 60;
+            bcx = -60;
         }
 
-        if (mcx > sb.x * (-1))
+        if (mcx < sb.x)
         {
-            mcx -= 0.05f;
+            mcx += 0.05f;
         }
         else
         {
-            mcx = 60;
+            mcx = -60;
         }
 
         if (mx > sb.x * (-1))
