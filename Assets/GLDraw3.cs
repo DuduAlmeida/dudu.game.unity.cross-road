@@ -43,6 +43,14 @@ public class GLDraw3 : MonoBehaviour
 
     sb = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
+    if (Input.GetKey(KeyCode.UpArrow))
+    {
+      by += velo;
+    }
+    if (Input.GetKey(KeyCode.DownArrow))
+    {
+      by -= velo;
+    }
     if (Input.GetKey(KeyCode.LeftArrow))
     {
       bx -= velo;
@@ -50,11 +58,6 @@ public class GLDraw3 : MonoBehaviour
     if (Input.GetKey(KeyCode.RightArrow))
     {
       bx += velo;
-    }
-    if (Input.GetKey(KeyCode.Space))
-    {
-      shoot = true;
-      by += velo;
     }
     if (Input.GetKey(KeyCode.Escape))
     {
@@ -233,32 +236,6 @@ public class GLDraw3 : MonoBehaviour
     GL.Vertex3(sb.x, sb.y - 4, 0);
     GL.Vertex3(sb.x, sb.y, 0);
 
-    GL.End();
-    GL.PopMatrix();
-  }
-  void BarRight()
-  {
-    GL.PushMatrix();
-    mat.SetPass(0);
-    GL.Begin(GL.QUADS);
-    GL.Color(Color.yellow);
-    GL.Vertex3(sb.x, sb.y * (-1), 0);
-    GL.Vertex3(sb.x, sb.y, 0);
-    GL.Vertex3(sb.x - 1, sb.y, 0);
-    GL.Vertex3(sb.x - 1, sb.y * (-1), 0);
-    GL.End();
-    GL.PopMatrix();
-  }
-  void BarLeft()
-  {
-    GL.PushMatrix();
-    mat.SetPass(0);
-    GL.Begin(GL.QUADS);
-    GL.Color(Color.yellow);
-    GL.Vertex3(sb.x * (-1), sb.y * (-1), 0);
-    GL.Vertex3(sb.x * (-1), sb.y, 0);
-    GL.Vertex3(sb.x * (-1) + 1, sb.y, 0);
-    GL.Vertex3(sb.x * (-1) + 1, sb.y * (-1), 0);
     GL.End();
     GL.PopMatrix();
   }
