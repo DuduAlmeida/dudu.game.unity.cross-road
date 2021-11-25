@@ -246,190 +246,6 @@ public class GLDraw3 : MonoBehaviour
     GL.End();
     GL.PopMatrix();
   }
-  void CarMustang(int carX, int carY)
-  {
-    Color carColor = Color.white;
-    carColor.r = 255;
-    carColor.g = 165;
-    carColor.b = 0;
-    const int carWidth = 6;
-    const int carHeight = 13;
-    const float wheelHeight = 2.0f;
-    const float wheelWidth = 0.5f;
-
-    GL.PushMatrix();
-    mat.SetPass(0);
-
-    // #region Preencher Carcaça Carro
-    GL.Begin(GL.QUADS);
-    GL.Color(carColor);
-    GL.Vertex(new Vector3(carX, carY, 0));
-    GL.Vertex(new Vector3(carX, carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY, 0));
-    GL.End();
-    GL.Begin(GL.QUADS);
-    GL.Color(carColor);
-    GL.Vertex(new Vector3(carX + carHeight, carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 1.05f), carY + (carWidth / 2), 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY, 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY, 0));
-    GL.End();
-    // #endregion Preencher Carcaça Carro
-    // #region Preencher Pneus
-    GL.Begin(GL.QUADS);
-    GL.Color(Color.gray);
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY, 0));
-    GL.End();
-    GL.Begin(GL.QUADS);
-    GL.Color(Color.gray);
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY + carWidth, 0));
-    GL.End();
-    GL.Begin(GL.QUADS);
-    GL.Color(Color.gray);
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY, 0));
-    GL.End();
-    GL.Begin(GL.QUADS);
-    GL.Color(Color.gray);
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY + carWidth, 0));
-    GL.End();
-    // #endregion Preencher Pneus
-
-    GL.Begin(GL.LINES);
-    GL.Color(Color.black);
-
-    // #region Carro                
-    // #region Carro#Carcaça            
-    GL.Vertex(new Vector3(carX, carY, 0));
-    GL.Vertex(new Vector3(carX, carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX, carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 1.05f), carY + (carWidth / 2), 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 1.05f), carY + (carWidth / 2), 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY, 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY, 0));
-    GL.Vertex(new Vector3(carX, carY, 0));
-    // #endregion Carro#Carcaça
-    // #region Capô
-    GL.Vertex(new Vector3(carX + carHeight, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 3, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 3, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 4, carY + carWidth - 2, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 4, carY + carWidth - 2, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 4, carY + 2, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 4, carY + 2, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 3, carY + 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 3, carY + 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight, carY + 0.5f, 0));
-    // #region Centro Capô
-    GL.Vertex(new Vector3(carX + carHeight - 3, carY + carWidth - 2, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 2, carY + carWidth - 2, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 2, carY + carWidth - 2, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 1.05f) - 2, carY + (carWidth / 2), 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 1.05f) - 2, carY + (carWidth / 2), 0));
-    GL.Vertex(new Vector3(carX + carHeight - 2, carY + 2, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 2, carY + 2, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 3, carY + 2, 0));
-    // #endregion Centro Capô
-    // #endregion Capô
-    // #region Porta Malas
-    GL.Vertex(new Vector3(carX, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + 2f, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + 2f, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + 2f, carY + 0.5f, 0));
-    GL.Vertex(new Vector3(carX + 2f, carY + 0.5f, 0));
-    GL.Vertex(new Vector3(carX, carY + 0.5f, 0));
-    // #endregion Porta Malas
-    // #region Janela dianteira
-    GL.Vertex(new Vector3(carX + carHeight - 4.5f, carY + 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 5.5f, carY + 1.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 5.5f, carY + 1.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 5.5f, carY + carWidth - 1.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 5.5f, carY + carWidth - 1.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 4.5f, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 4.5f, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 4.5f, carY + 0.5f, 0));
-    // #endregion Janela dianteira
-    // #region Janela traseira
-    GL.Vertex(new Vector3(carX + 2.5f, carY + 1, 0));
-    GL.Vertex(new Vector3(carX + 3, carY + 1.5f, 0));
-    GL.Vertex(new Vector3(carX + 3, carY + 1.5f, 0));
-    GL.Vertex(new Vector3(carX + 3, carY + carWidth - 1.5f, 0));
-    GL.Vertex(new Vector3(carX + 3, carY + carWidth - 1.5f, 0));
-    GL.Vertex(new Vector3(carX + 2.5f, carY + carWidth - 1, 0));
-    GL.Vertex(new Vector3(carX + 2.5f, carY + carWidth - 1, 0));
-    GL.Vertex(new Vector3(carX + 2.5f, carY + 1, 0));
-    // #endregion Janela traseira
-    // #region Janela lateral esquerda
-    GL.Vertex(new Vector3(carX + 3, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 5f, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 5f, carY + carWidth - 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 6f, carY + carWidth - 1.3f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 6f, carY + carWidth - 1.3f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 7f, carY + carWidth - 1.3f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 7f, carY + carWidth - 1.3f, 0));
-    GL.Vertex(new Vector3(carX + 3, carY + carWidth - 0.5f, 0));
-    // #endregion Janela lateral esquerda
-    // #region Janela lateral direita
-    GL.Vertex(new Vector3(carX + 3, carY + 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 5f, carY + 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 5f, carY + 0.5f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 6f, carY + 1.3f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 6f, carY + 1.3f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 7f, carY + 1.3f, 0));
-    GL.Vertex(new Vector3(carX + carHeight - 7f, carY + 1.3f, 0));
-    GL.Vertex(new Vector3(carX + 3, carY + 0.5f, 0));
-    // #endregion Janela lateral direita
-    // #region Pneu Dianteiro Direita
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY + carWidth, 0));
-    // #endregion Pneu Dianteiro Direita
-    // #region Pneu Dianteiro Esquerda
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f), carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.75f) + (wheelHeight * 0.5f) - wheelHeight, carY, 0));
-    // #endregion Pneu Dianteiro Esquerda
-    // #region Pneu Traseiro Direita
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY + carWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY + carWidth + wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY + carWidth, 0));
-    // #endregion Pneu Traseiro Direita
-    // #region Pneu Traseiro Esquerda
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f), carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY - wheelWidth, 0));
-    GL.Vertex(new Vector3(carX + (carHeight * 0.25f) - (wheelHeight * 0.5f) + wheelHeight, carY, 0));
-    // #endregion Pneu Traseiro Esquerda
-    // #endregion Carro
-
-    GL.End();
-    GL.PopMatrix();
-  }
   void Motorcycle(float motorcycleX, float motorcycleY)
   {
     motoca = true;
@@ -527,8 +343,6 @@ public class GLDraw3 : MonoBehaviour
     }
   }
   void CarMustang(float carX, float carY)
-
-
   {
     mustang = true;
     Color carColor = Color.white;
@@ -873,15 +687,15 @@ public class GLDraw3 : MonoBehaviour
     }
     else
     {
-      CheckCollision(bcx, bcy, 7, 13, carrinho);
-      CheckCollision(mcx, mcy, 7, 13, mustang);
-      CheckCollision(mx, my, 7, 17, motoca);
+      CheckCollision(bcx, bcy, 13, 6, carrinho);
+      CheckCollision(mcx, mcy, 13, 6, mustang);
+      CheckCollision(mx, my, 17, 5.8f, motoca);
     }
   }
 
   void CheckCollision(float x, float y, float width, float height, bool hasItem)
   {
-    if (((by + 1) >= (y - 3) && (by - 1) <= (y + 4)) && ((bx + 1) >= (x) && (x - 1) <= (y + 17)))
+    if ((by) <= y && (by) >= (y - height) && (bx) >= x && (bx) <= (x + width))
     {
       if (hasItem)
       {
