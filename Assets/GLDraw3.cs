@@ -14,11 +14,13 @@ public class GLDraw3 : MonoBehaviour
   bool carrinho = false;
   bool mustang = false;
   public float bcx = 0; //basciCar
-  public float bcy = 15; //basciCar
+  public float bcy = 18; //basciCar
   public float mcx = -30; //mustangCar
   public float mcy = 10; //mustangCar
-  public float mx = 10; //motorcycle
-  public float my = 10; //motorcycle
+  public float amcx = -30; //Alternative mustangCar
+  public float amcy = 0; //Alternative mustangCar
+  public float mx = 15; //motorcycle
+  public float my = 4; //motorcycle
   float velo = 0.05f;
   public float mGL = -2;
   public float mGR = 2;
@@ -70,6 +72,7 @@ public class GLDraw3 : MonoBehaviour
       BarObjective();
       BarBottom();
       CarMustang(mcx, mcy);
+      CarMustang(amcx, amcy);
       BasicCar(bcx, bcy);
       Motorcycle(mx, my);
       Mouse();
@@ -81,6 +84,7 @@ public class GLDraw3 : MonoBehaviour
   public void StartGame()
   {
     sg = true;
+    by = (sb.y * (-1) + 4);
   }
   public void QuitGame()
   {
@@ -682,13 +686,14 @@ public class GLDraw3 : MonoBehaviour
     if (by >= (sb.y - 4))
     {
       score++;
-      by = -15;
+      by = (sb.y * (-1) + 4);
       velo += 0.025f;
     }
     else
     {
       CheckCollision(bcx, bcy, 13, 6, carrinho);
       CheckCollision(mcx, mcy, 13, 6, mustang);
+      CheckCollision(amcx, amcy, 13, 6, mustang);
       CheckCollision(mx, my, 17, 5.8f, motoca);
     }
   }
@@ -700,7 +705,7 @@ public class GLDraw3 : MonoBehaviour
       if (hasItem)
       {
         life--;
-        by = -15;
+        by = (sb.y * (-1) + 4);
       }
     }
   }
@@ -708,7 +713,7 @@ public class GLDraw3 : MonoBehaviour
   {
     if (bcx < sb.x)
     {
-      bcx += 0.01f;
+      bcx += 0.01f + velo * 0.9f;
     }
     else
     {
@@ -717,16 +722,25 @@ public class GLDraw3 : MonoBehaviour
 
     if (mcx < sb.x)
     {
-      mcx += 0.05f;
+      mcx += 0.05f + velo * 0.9f;
     }
     else
     {
       mcx = -60;
     }
 
+    if (amcx < sb.x)
+    {
+      amcx += (0.05f + velo * 0.9f);
+    }
+    else
+    {
+      amcx = -60;
+    }
+
     if (mx > sb.x * (-1))
     {
-      mx -= 0.025f;
+      mx -= 0.025f + (velo * 0.9f);
     }
     else
     {

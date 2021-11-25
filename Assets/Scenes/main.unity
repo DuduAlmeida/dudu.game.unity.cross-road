@@ -320,14 +320,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: f0a93d48da77563468e6556b890efdb4, type: 2}
   sb: {x: 0, y: 0}
-  by: 0
+  by: -18
   bx: 0
   bcx: 0
-  bcy: 15
+  bcy: 18
   mcx: 30
-  mccy: 10
+  mcy: 10
+  amcx: -30
+  amcy: -10
   mx: 10
-  my: 10
+  my: 4
   mGL: -2
   mGR: 2
   life: 3
