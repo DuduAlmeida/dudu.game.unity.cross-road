@@ -8,7 +8,7 @@ public class GLDraw3 : MonoBehaviour
   public Material mat;
   public Vector2 sb;
   bool sg = false;
-  public float by = 0;
+  public float by = -15;
   public float bx = 0;
   bool motoca = false;
   bool carrinho = false;
@@ -16,11 +16,10 @@ public class GLDraw3 : MonoBehaviour
   public float bcx = 0; //basciCar
   public float bcy = 15; //basciCar
   public float mcx = -30; //mustangCar
-  public float mccy = 10; //mustangCar
+  public float mcy = 10; //mustangCar
   public float mx = 10; //motorcycle
   public float my = 10; //motorcycle
   float velo = 0.05f;
-  bool shoot = false;
   public float mGL = -2;
   public float mGR = 2;
   bool invert;
@@ -47,35 +46,30 @@ public class GLDraw3 : MonoBehaviour
     {
       by += velo;
     }
-    if (Input.GetKey(KeyCode.DownArrow))
+    if (Input.GetKey(KeyCode.DownArrow) && by > (sb.y * (-1) + 4))
     {
       by -= velo;
     }
-    if (Input.GetKey(KeyCode.LeftArrow))
+    if (Input.GetKey(KeyCode.LeftArrow) && bx > (sb.x * (-1) + 2.5f))
     {
       bx -= velo;
     }
-    if (Input.GetKey(KeyCode.RightArrow))
+    if (Input.GetKey(KeyCode.RightArrow) && bx < (sb.x - 2.5f))
     {
       bx += velo;
-    }
-    if (Input.GetKey(KeyCode.Escape))
-    {
-      shoot = false;
-      by = 0;
     }
 
     Move();
     Collision();
     MoveVehicles();
-    }
+  }
   private void OnPostRender()
   {
     if (sg)
     {
       BarObjective();
       BarBottom();
-      CarMustang(mcx, mccy);
+      CarMustang(mcx, mcy);
       BasicCar(bcx, bcy);
       Motorcycle(mx, my);
       Mouse();
@@ -240,18 +234,18 @@ public class GLDraw3 : MonoBehaviour
     GL.PopMatrix();
   }
   void BarBottom()
-    {
-        GL.PushMatrix();
-        mat.SetPass(0);
-        GL.Begin(GL.QUADS);
-        GL.Color(Color.gray);
-        GL.Vertex3(sb.x * (-1), sb.y * (-1), 0);
-        GL.Vertex3(sb.x * (-1), sb.y * (-1) + 4, 0);
-        GL.Vertex3(sb.x, sb.y * (-1) + 4, 0);
-        GL.Vertex3(sb.x, sb.y * (-1), 0);
-        GL.End();
-        GL.PopMatrix();
-    }
+  {
+    GL.PushMatrix();
+    mat.SetPass(0);
+    GL.Begin(GL.QUADS);
+    GL.Color(Color.gray);
+    GL.Vertex3(sb.x * (-1), sb.y * (-1), 0);
+    GL.Vertex3(sb.x * (-1), sb.y * (-1) + 4, 0);
+    GL.Vertex3(sb.x, sb.y * (-1) + 4, 0);
+    GL.Vertex3(sb.x, sb.y * (-1), 0);
+    GL.End();
+    GL.PopMatrix();
+  }
   void CarMustang(int carX, int carY)
   {
     Color carColor = Color.white;
@@ -516,9 +510,6 @@ public class GLDraw3 : MonoBehaviour
 
   void Move()
   {
-    if (shoot)
-      by += velo;
-
     if (mGL > sb.x * (-1) && invert)
     {
       GL.PushMatrix();
@@ -874,74 +865,61 @@ public class GLDraw3 : MonoBehaviour
     }
 
     //Calçada collision
-    if (by >= sb.y)
+    if (by >= (sb.y - 4))
     {
-      velo += 0.05f;
       score++;
-      by = 0;
-      shoot = false;
+      by = -15;
+      velo += 0.025f;
     }
-    //carrinho collision
-    else if (((by + 1) >= (bcy - 3) && (by - 1) <= (bcy + 4)) && ((bx + 1) >= (bcx) && (bcx - 1) <= (my + 17)))
+    else
     {
-      if (carrinho)
-      {
-        life--;
-        by = 0;
-        shoot = false;
-      }
-    }
-    //mustang collision
-    else if (((by + 1) >= (mccy - 3) && (by - 1) <= (mccy + 4)) && ((bx + 1) >= (mcx) && (mcx - 1) <= (my + 17)))
-    {
-      if (mustang)
-      {
-        life--;
-        by = 0;
-        shoot = false;
-      }
-    }
-
-    //Motoca collision
-    else if (((by + 1) >= (my - 3) && (by - 1) <= (my + 4)) && ((bx + 1) >= (mx) && (bx - 1) <= (my + 17)))
-    {
-      if (motoca)
-      {
-        life--;
-        by = 0;
-        shoot = false;
-      }
+      CheckCollision(bcx, bcy, 7, 13, carrinho);
+      CheckCollision(mcx, mcy, 7, 13, mustang);
+      CheckCollision(mx, my, 7, 17, motoca);
     }
   }
 
-    void MoveVehicles() {
-        if (bcx < sb.x)
-        {
-            bcx += 0.01f;
-        }
-        else {
-            bcx = -60;
-        }
-
-        if (mcx < sb.x)
-        {
-            mcx += 0.05f;
-        }
-        else
-        {
-            mcx = -60;
-        }
-
-        if (mx > sb.x * (-1))
-        {
-            mx -= 0.025f;
-        }
-        else
-        {
-            mx = 60;
-        }
-
+  void CheckCollision(float x, float y, float width, float height, bool hasItem)
+  {
+    if (((by + 1) >= (y - 3) && (by - 1) <= (y + 4)) && ((bx + 1) >= (x) && (x - 1) <= (y + 17)))
+    {
+      if (hasItem)
+      {
+        life--;
+        by = -15;
+      }
     }
+  }
+  void MoveVehicles()
+  {
+    if (bcx < sb.x)
+    {
+      bcx += 0.01f;
+    }
+    else
+    {
+      bcx = -60;
+    }
+
+    if (mcx < sb.x)
+    {
+      mcx += 0.05f;
+    }
+    else
+    {
+      mcx = -60;
+    }
+
+    if (mx > sb.x * (-1))
+    {
+      mx -= 0.025f;
+    }
+    else
+    {
+      mx = 60;
+    }
+
+  }
 
   #endregion
 }
